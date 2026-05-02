@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stammtisch-Abfrage</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --yes: #16a34a;
+      --no: #dc2626;
+      --maybe: #d97706;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+    }
+
+    p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .buttons {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.05s ease, opacity 0.2s ease;
+    }
+
+    button:active { transform: scale(0.99); }
+    button:hover { opacity: 0.92; }
+
+    .yes { background: var(--yes); }
+    .no { background: var(--no); }
+    .maybe { background: var(--maybe); }
+
+    .result {
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #eef2ff;
+      color: #1e3a8a;
+      font-weight: 600;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>🍻 Stammtisch-Abfrage</h1>
+    <p>
+      Wer ist am <strong>28.05.2026 um 20:00 Uhr</strong> beim Stammtisch dabei?
+      <br />
+      Bitte abstimmen:
+    </p>
+
+    <div class="buttons">
+      <button class="yes" onclick="vote('✅ Dabei')">✅ Dabei</button>
+      <button class="no" onclick="vote('❌ Nicht dabei')">❌ Nicht dabei</button>
+      <button class="maybe" onclick="vote('❔ Vielleicht')">❔ Vielleicht</button>
+    </div>
+
+    <div class="result" id="result">Noch keine Auswahl getroffen.</div>
+    <div class="footer">Hinweis: Diese Demo speichert keine Daten auf einem Server.</div>
+  </main>
+
+  <script>
+    function vote(choice) {
+      const result = document.getElementById("result");
+      result.textContent = "Deine Antwort: " + choice;
+    }
+  </script>
+</body>
+</html>
